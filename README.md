@@ -33,18 +33,17 @@ This tool does the following:
 
 # Usage
 
-<!-- usage -->
-
-```sh-session
-$ npm install -g swagger2-postman-doc
-$ swagger2-postman-doc COMMAND
-running command...
-$ swagger2-postman-doc (-v|--version|version)
-swagger2-postman-doc/1.0.3 darwin-x64 node-v12.14.1
-$ swagger2-postman-doc --help [COMMAND]
 USAGE
-  $ swagger2-postman-doc COMMAND
-...
-```
+\$ swagger2-postman-doc FILE APIKEY APIID APIVERSIONID SCHEMAID COLLECTIONUID
 
-<!-- usagestop -->
+ARGUMENTS
+FILE Path to Swagger file
+APIKEY Postman API key
+APIID Postman API Id
+APIVERSIONID Postman API Version Id
+SCHEMAID Postman API Schema Id
+COLLECTIONUID Postman API Documentation Collection Uid
+
+OPTIONS
+-h, --help show CLI help
+-v, --version show CLI version
