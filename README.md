@@ -33,6 +33,7 @@ This tool does the following:
 
 # Usage
 
+```
 USAGE
 \$ swagger2-postman-doc FILE APIKEY APIID APIVERSIONID SCHEMAID COLLECTIONUID
 
@@ -47,3 +48,4 @@ COLLECTIONUID Postman API Documentation Collection Uid
 OPTIONS
 -h, --help show CLI help
 -v, --version show CLI version
+```
