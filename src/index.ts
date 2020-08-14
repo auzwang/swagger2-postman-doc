@@ -29,9 +29,9 @@ class Swagger2PostmanDoc extends Command {
     },
     { name: 'schemaId', required: true, description: 'Postman API Schema Id' },
     {
-      name: 'collectionId',
+      name: 'collectionUid',
       required: true,
-      description: 'Postman API Documentation Collection Id',
+      description: 'Postman API Documentation Collection Uid',
     },
   ]
 
