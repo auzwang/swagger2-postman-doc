@@ -66,9 +66,9 @@ class Swagger2PostmanDoc extends Command {
     // Delete the generated collection otherwise Postman will complain about the rearrangement.
     await postman.deleteGeneratedCollection(collectionUid)
     // Retrieve the main Documentation Collection to retain `collection.info`.
-    const { info } = await postman.getCollection(args.collectionId)
+    const { info } = await postman.getCollection(args.collectionUid)
     // Update the main Documentation Collection with the new Schema.
-    await postman.updateCollection(args.collectionId, { info, item, variable })
+    await postman.updateCollection(args.collectionUid, { info, item, variable })
   }
 }
 
