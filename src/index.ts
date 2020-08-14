@@ -1,5 +1,6 @@
 import { Command, flags } from '@oclif/command'
 import { Postman } from './postman'
+import { convertSwaggerToCollection } from './converter'
 
 class Swagger2PostmanDoc extends Command {
   static description =
@@ -16,11 +17,6 @@ class Swagger2PostmanDoc extends Command {
   static args = [
     { name: 'file', required: true, description: 'Path to Swagger file' },
     { name: 'apiKey', required: true, description: 'Postman API key' },
-    {
-      name: 'workspaceId',
-      required: true,
-      description: 'Postman Workspace Id',
-    },
     { name: 'apiId', required: true, description: 'Postman API Id' },
     {
       name: 'apiVersionId',
@@ -43,7 +39,7 @@ class Swagger2PostmanDoc extends Command {
     try {
       swaggerJson = require(file || '')
     } catch (error) {
-      throw new Error(
+      return this.error(
         `Failed to require Swagger file: ${file}. ${this.helpText}`
       )
     }
@@ -54,16 +50,16 @@ class Swagger2PostmanDoc extends Command {
       args.apiVersionId,
       args.schemaId
     )
-    // Generate a Postman Documentation Collection from the Schema.
-    const collectionUid = await postman.generateCollectionFromSchema(
-      args.workspaceId,
-      args.apiId,
-      args.apiVersionId,
-      args.schemaId
-    )
-    // Retrieve the generated collection's data. We'll be updating our main API's Documentation Collection with it.
+    let collection
+    try {
+      collection = await convertSwaggerToCollection(file)
+    } catch (error) {
+      return this.error(error)
+    }
+    const collectionUid = await postman.createCollection(collection)
+    // Retrieve the new collection's data. We'll be updating our main API's Documentation Collection with it.
     const { item, variable } = await postman.getCollection(collectionUid)
-    // Delete the generated collection otherwise Postman will complain about the rearrangement.
+    // Delete the imported collection otherwise Postman will complain about the rearrangement.
     await postman.deleteGeneratedCollection(collectionUid)
     // Retrieve the main Documentation Collection to retain `collection.info`.
     const { info } = await postman.getCollection(args.collectionUid)

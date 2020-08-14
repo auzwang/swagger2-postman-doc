@@ -26,8 +26,8 @@ another manual process of reconciling updates with published documentation.
 This tool does the following:
 
 1. Updates a Postman API schema with a given Swagger (OpenAPI 2) definition.
-2. Generates a Postman Documentation Collection.
-3. Updates given Documentation Collection with the generated one.
+2. Converts the Swagger definition into a Postman Collection using [openapi-to-postmanv2](https://github.com/postmanlabs/openapi-to-postman).
+3. Updates given Documentation Collection with the converted one.
 
 <!-- descriptionstop -->
 

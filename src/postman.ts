@@ -43,35 +43,6 @@ export class Postman {
     }
   }
 
-  async generateCollectionFromSchema(
-    workspaceId: string,
-    apiId: string,
-    apiVersionId: string,
-    schemaId: string
-  ): Promise<string> {
-    try {
-      const response = await this.axiosInstance.post(
-        `/apis/${apiId}/versions/${apiVersionId}/schemas/${schemaId}/collections`,
-        {
-          name: `Generated: ${Date.now()}`,
-          relations: [{ type: 'documentation' }],
-        },
-        {
-          params: { workspace: workspaceId },
-        }
-      )
-      const collectionUid = response.data.collection.uid
-      console.debug(
-        `${response.status}: Generated Collection from Postman API Schema`
-      )
-      console.debug('Response data: ', response.data)
-      return collectionUid
-    } catch (error) {
-      console.error('Failed to generate Collection from Postman API Schema')
-      throw error
-    }
-  }
-
   async getCollection(collectionUid: string): Promise<Collection> {
     try {
       const response = await this.axiosInstance.get(
@@ -113,6 +84,19 @@ export class Postman {
       console.debug(`${response.status}: Updated Collection ${collectionUid}`)
     } catch (error) {
       console.error(`Failed to update Collection ${collectionUid}`)
+      throw error
+    }
+  }
+
+  async createCollection(collection: any): Promise<string> {
+    try {
+      const response = await this.axiosInstance.post(`/collections`, {
+        collection,
+      })
+      console.debug(`${response.status}: Created Collection`)
+      return response.data.collection.uid
+    } catch (error) {
+      console.error(`Failed to Create Collection`)
       throw error
     }
   }

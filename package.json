@@ -12,6 +12,7 @@
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^3",
     "axios": "0.19.2",
+    "openapi-to-postmanv2": "1.2.6",
     "tslib": "^1"
   },
   "devDependencies": {
@@ -28,7 +29,7 @@
     "typescript": "^3.3"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.1.0"
   },
   "files": [
     "/bin",
