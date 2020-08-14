@@ -1,7 +1,7 @@
 {
   "name": "swagger2-postman-doc",
   "description": "Generates Postman Documentation from Swagger and updates a Collection.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Zhe Wang @auzwang",
   "bin": {
     "swagger2-postman-doc": "./bin/run"
