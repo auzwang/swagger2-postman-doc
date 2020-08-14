@@ -40,7 +40,7 @@ $ npm install -g swagger2-postman-doc
 $ swagger2-postman-doc COMMAND
 running command...
 $ swagger2-postman-doc (-v|--version|version)
-swagger2-postman-doc/1.0.1 darwin-x64 node-v12.14.1
+swagger2-postman-doc/1.0.2 darwin-x64 node-v12.14.1
 $ swagger2-postman-doc --help [COMMAND]
 USAGE
   $ swagger2-postman-doc COMMAND
