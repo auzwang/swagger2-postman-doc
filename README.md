@@ -1,5 +1,4 @@
 # swagger2-postman-doc
-====================
 
 CLI tool to generate Postman Documentation from Swagger and update a Collection.
 
@@ -28,28 +27,29 @@ This tool does the following:
 1. Updates a Postman API schema with a given Swagger (OpenAPI 2) definition.
 2. Generates a Postman Documentation Collection.
 3. Updates given Documentation Collection with the generated one.
+
 <!-- descriptionstop -->
 
 # Usage
 
 <!-- usage -->
 
-```sh-session
-$ npm install -g swagger2-postman-doc
-$ swagger2-postman-doc COMMAND
-running command...
-$ swagger2-postman-doc (-v|--version|version)
-swagger2-postman-doc/0.0.0 darwin-x64 node-v12.14.1
-$ swagger2-postman-doc --help [COMMAND]
+```
 USAGE
-  $ swagger2-postman-doc COMMAND
-...
+  $ swagger2-postman-doc FILE APIKEY WORKSPACEID APIID APIVERSIONID SCHEMAID COLLECTIONID
+
+ARGUMENTS
+  FILE          Path to Swagger file
+  APIKEY        Postman API key
+  WORKSPACEID   Postman Workspace Id
+  APIID         Postman API Id
+  APIVERSIONID  Postman API Version Id
+  SCHEMAID      Postman API Schema Id
+  COLLECTIONID  Postman API Documentation Collection Id
+
+OPTIONS
+  -h, --help     show CLI help
+  -v, --version  show CLI version
 ```
 
 <!-- usagestop -->
-
-# Commands
-
-<!-- commands -->
-
-<!-- commandsstop -->
