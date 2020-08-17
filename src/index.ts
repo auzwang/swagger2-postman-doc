@@ -1,3 +1,4 @@
+import { promises as fs } from 'fs'
 import { Command, flags } from '@oclif/command'
 import { Postman } from './postman'
 import { convertSwaggerToCollection } from './converter'
@@ -12,6 +13,11 @@ class Swagger2PostmanDoc extends Command {
     // add --version flag to show CLI version
     version: flags.version({ char: 'v' }),
     help: flags.help({ char: 'h' }),
+    // flag with a value (-o, --output=VALUE)
+    output: flags.string({
+      char: 'o',
+      description: 'output converted Postman Collection to a file',
+    }),
   }
 
   static args = [
@@ -32,7 +38,7 @@ class Swagger2PostmanDoc extends Command {
   ]
 
   async run() {
-    const { args } = this.parse(Swagger2PostmanDoc)
+    const { args, flags } = this.parse(Swagger2PostmanDoc)
     const postman = new Postman(args.apiKey)
     let swaggerJson
     const file = `${process.cwd()}/${args.file}`
@@ -53,6 +59,11 @@ class Swagger2PostmanDoc extends Command {
     let collection
     try {
       collection = await convertSwaggerToCollection(file)
+      const output = flags.output
+      if (output) {
+        await fs.writeFile(output, JSON.stringify(collection))
+        this.log('Saved collection to', output)
+      }
     } catch (error) {
       return this.error(error)
     }
