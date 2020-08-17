@@ -20,8 +20,9 @@ CLI tool to generate Postman Documentation from Swagger and update a Collection.
 
 Postman supports syncing [schema syncing with GitHub](https://learning.postman.com/docs/integrations/available-integrations/github/#syncing-your-api-schemas-on-github)
 but _currently_ requires the manual generation of a documentation collection from the
-schema. Codified schema updates therefore create a new collection each sync, necessitating
-another manual process of reconciling updates with a published documentation.
+schema. Codified schema updates therefore create a new collection each sync or manually
+validating the schema to sync, necessitating another process of reconciling updates with
+published documentation.
 
 This tool does the following:
 
