@@ -12,6 +12,7 @@ CLI tool to generate Postman Documentation from Swagger and update a Collection.
 - [swagger2-postman-doc](#swagger2-postman-doc)
 - [Description](#description)
 - [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
 
 # Description
@@ -35,9 +36,72 @@ This tool does the following:
 
 # Usage
 
+<!-- usage -->
+
+```sh-session
+$ npm install -g swagger2-postman-doc
+$ swagger2-postman-doc COMMAND
+running command...
+$ swagger2-postman-doc (-v|--version|version)
+swagger2-postman-doc/2.0.1 darwin-x64 node-v12.14.1
+$ swagger2-postman-doc --help [COMMAND]
+USAGE
+  $ swagger2-postman-doc COMMAND
+...
+```
+
+<!-- usagestop -->
+
+# Commands
+
+<!-- commands -->
+
+- [`swagger2-postman-doc hapi HOST`](#swagger2-postman-doc-hapi-host)
+- [`swagger2-postman-doc help [COMMAND]`](#swagger2-postman-doc-help-command)
+- [`swagger2-postman-doc postman FILE APIKEY APIID APIVERSIONID SCHEMAID COLLECTIONUID`](#swagger2-postman-doc-postman-file-apikey-apiid-apiversionid-schemaid-collectionuid)
+
+## `swagger2-postman-doc hapi HOST`
+
+Generate Swagger from Hapi Swagger.
+
 ```
 USAGE
-  $ swagger2-postman-doc FILE APIKEY APIID APIVERSIONID SCHEMAID COLLECTIONUID
+  $ swagger2-postman-doc hapi HOST
+
+ARGUMENTS
+  HOST  Hapi Swagger host
+
+OPTIONS
+  -h, --help           show CLI help
+  -o, --output=output  swagger output path
+```
+
+_See code: [src/commands/hapi.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v2.0.1/src/commands/hapi.ts)_
+
+## `swagger2-postman-doc help [COMMAND]`
+
+display help for swagger2-postman-doc
+
+```
+USAGE
+  $ swagger2-postman-doc help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
+
+## `swagger2-postman-doc postman FILE APIKEY APIID APIVERSIONID SCHEMAID COLLECTIONUID`
+
+Generate Postman Documentation from Swagger and update a Collection.
+
+```
+USAGE
+  $ swagger2-postman-doc postman FILE APIKEY APIID APIVERSIONID SCHEMAID COLLECTIONUID
 
 ARGUMENTS
   FILE           Path to Swagger file
@@ -49,6 +113,9 @@ ARGUMENTS
 
 OPTIONS
   -h, --help           show CLI help
-  -o, --output=output  output converted Postman Collection to a file
-  -v, --version        show CLI version
+  -o, --output=output  Postman Collection output path
 ```
+
+_See code: [src/commands/postman.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v2.0.1/src/commands/postman.ts)_
+
+<!-- commandsstop -->

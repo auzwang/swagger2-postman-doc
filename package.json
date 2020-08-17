@@ -23,6 +23,7 @@
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.1",
     "eslint-config-prettier": "6.11.0",
+    "globby": "^10",
     "husky": "4.2.5",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
@@ -34,7 +35,9 @@
   },
   "files": [
     "/bin",
-    "/lib"
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
   ],
   "homepage": "https://github.com/auzwang/swagger2-postman-doc",
   "keywords": [
@@ -43,19 +46,24 @@
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
-    "bin": "swagger2-postman-doc"
+    "commands": "./lib/commands",
+    "bin": "swagger2-postman-doc",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
   },
   "repository": "auzwang/swagger2-postman-doc",
   "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md"
   },
   "types": "lib/index.d.ts",
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged && npm pack --dry-run"
     }
   }
 }
