@@ -6,7 +6,31 @@ import { promisify } from 'util'
 const toPostman = promisify(openapiToPostman.convert)
 const toOpenApi = promisify(swaggerToOpenApi.convertObj)
 
-export const convertSwaggerToCollection = async (filePath: string) => {
+export type FolderStrategy = 'paths' | 'tags'
+export type RequestParametersResolution = 'schema' | 'example'
+export type ExampleParametersResolution = 'schema' | 'example'
+
+export interface PostmanConverterOptions {
+  folderStrategy?: FolderStrategy
+  requestParametersResolution?: RequestParametersResolution
+  exampleParametersResolution?: ExampleParametersResolution
+  schemaFaker?: boolean
+  collapseFolders?: boolean
+}
+
+const defaultToPostmanOptions = {
+  // Group by tags over paths
+  folderStrategy: 'tags' as FolderStrategy,
+  requestParametersResolution: 'schema' as RequestParametersResolution,
+  exampleParametersResolution: 'example' as ExampleParametersResolution,
+  schemaFaker: true,
+  collapseFolders: true,
+}
+
+export const convertSwaggerToCollection = async (
+  filePath: string,
+  toPostmanOptions: PostmanConverterOptions = defaultToPostmanOptions
+) => {
   const swaggerJson = await fs.readFile(filePath, 'utf8')
   const swagger = JSON.parse(swaggerJson)
   const { openapi } = await toOpenApi(swagger, {})
@@ -14,10 +38,8 @@ export const convertSwaggerToCollection = async (filePath: string) => {
     type: 'json',
     data: openapi,
   }
-  const options = {
-    // Group by tags over paths
-    folderStrategy: 'tags',
-  }
+  const options = { ...defaultToPostmanOptions, ...toPostmanOptions }
+  console.debug('Converting to Postman with options:', options)
   const conversionResult = await toPostman(data, options)
   if (!conversionResult.result) {
     throw new Error(conversionResult.reason)

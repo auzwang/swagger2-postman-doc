@@ -1,6 +1,11 @@
 import { Command, flags } from '@oclif/command'
 import { Postman } from '../postman'
-import { convertSwaggerToCollection } from '../converter'
+import {
+  convertSwaggerToCollection,
+  ExampleParametersResolution,
+  FolderStrategy,
+  RequestParametersResolution,
+} from '../converter'
 import { promises as fs } from 'fs'
 
 export class Swagger2PostmanDoc extends Command {
@@ -15,6 +20,24 @@ export class Swagger2PostmanDoc extends Command {
     output: flags.string({
       char: 'o',
       description: 'Postman Collection output path',
+    }),
+    requestParametersResolution: flags.string({
+      description:
+        'Swagger to Postman Collection: generate the request parameters based on the schema or example',
+      default: 'schema',
+      options: ['schema', 'example'],
+    }),
+    exampleParametersResolution: flags.string({
+      description:
+        'Swagger to Postman Collection: generate the response parameters based on the schema or example',
+      default: 'example',
+      options: ['schema', 'example'],
+    }),
+    folderStrategy: flags.string({
+      description:
+        'Swagger to Postman Collection: create folders according to the spec’s paths or tags',
+      default: 'tags',
+      options: ['paths', 'tags'],
     }),
   }
 
@@ -56,7 +79,12 @@ export class Swagger2PostmanDoc extends Command {
     )
     let collection
     try {
-      collection = await convertSwaggerToCollection(file)
+      const toPostmanOptions = {
+        requestParametersResolution: flags.requestParametersResolution as RequestParametersResolution,
+        exampleParametersResolution: flags.exampleParametersResolution as ExampleParametersResolution,
+        folderStrategy: flags.folderStrategy as FolderStrategy,
+      }
+      collection = await convertSwaggerToCollection(file, toPostmanOptions)
       const output = flags.output
       if (output) {
         await fs.writeFile(output, JSON.stringify(collection))

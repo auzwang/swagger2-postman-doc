@@ -112,8 +112,17 @@ ARGUMENTS
   COLLECTIONUID  Postman API Documentation Collection Uid
 
 OPTIONS
-  -h, --help           show CLI help
-  -o, --output=output  Postman Collection output path
+  -h, --help                                    show CLI help
+  -o, --output=output                           Postman Collection output path
+
+  --exampleParametersResolution=schema|example  [default: example] Swagger to Postman Collection: generate the response
+                                                parameters based on the schema or example
+
+  --folderStrategy=paths|tags                   [default: tags] Swagger to Postman Collection: create folders according
+                                                to the spec’s paths or tags
+
+  --requestParametersResolution=schema|example  [default: schema] Swagger to Postman Collection: generate the request
+                                                parameters based on the schema or example
 ```
 
 _See code: [src/commands/postman.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v3.0.0/src/commands/postman.ts)_
