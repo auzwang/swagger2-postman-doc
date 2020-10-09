@@ -1,5 +1,5 @@
 const swaggerToOpenApi = require('swagger2openapi')
-const openapiToPostman = require('openapi-to-postmanv2')
+const openapiToPostman = require('@localz/openapi-to-postmanv2')
 import { promises as fs } from 'fs'
 import { promisify } from 'util'
 

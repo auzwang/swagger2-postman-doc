@@ -29,7 +29,7 @@ This tool does the following:
 
 1. Updates a Postman API schema with a given Swagger definition.
 2. Converts the Swagger definition into OpenAPI 3 using [swagger2openapi](https://github.com/Mermade/oas-kit/blob/master/packages/swagger2openapi/).
-3. Converts the OpenAPI definition into a Postman Collection using [openapi-to-postmanv2](https://github.com/postmanlabs/openapi-to-postman).
+3. Converts the OpenAPI definition into a Postman Collection using [openapi-to-postman](https://github.com/localz/openapi-to-postman).
 4. Updates given Documentation Collection with the converted one.
 
 <!-- descriptionstop -->
