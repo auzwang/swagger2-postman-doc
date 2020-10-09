@@ -43,7 +43,7 @@ $ npm install -g swagger2-postman-doc
 $ swagger2-postman-doc COMMAND
 running command...
 $ swagger2-postman-doc (-v|--version|version)
-swagger2-postman-doc/3.1.0 darwin-x64 node-v12.14.1
+swagger2-postman-doc/3.1.1 darwin-x64 node-v12.14.1
 $ swagger2-postman-doc --help [COMMAND]
 USAGE
   $ swagger2-postman-doc COMMAND
@@ -76,7 +76,7 @@ OPTIONS
   -o, --output=output  swagger output path
 ```
 
-_See code: [src/commands/hapi.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v3.1.0/src/commands/hapi.ts)_
+_See code: [src/commands/hapi.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v3.1.1/src/commands/hapi.ts)_
 
 ## `swagger2-postman-doc help [COMMAND]`
 
@@ -125,6 +125,6 @@ OPTIONS
                                                 parameters based on the schema or example
 ```
 
-_See code: [src/commands/postman.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v3.1.0/src/commands/postman.ts)_
+_See code: [src/commands/postman.ts](https://github.com/auzwang/swagger2-postman-doc/blob/v3.1.1/src/commands/postman.ts)_
 
 <!-- commandsstop -->
