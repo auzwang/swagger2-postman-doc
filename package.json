@@ -11,9 +11,9 @@
     "@localz/openapi-to-postmanv2": "1.2.14",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
-    "@oclif/plugin-help": "^3",
+    "@oclif/plugin-help": "^4.0.0",
     "axios": "0.19.2",
-    "swagger2openapi": "6.2.3",
+    "swagger2openapi": "7.0.4",
     "tslib": "^1"
   },
   "devDependencies": {
