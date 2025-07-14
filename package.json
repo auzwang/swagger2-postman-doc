@@ -9,8 +9,8 @@
   "bugs": "https://github.com/auzwang/swagger2-postman-doc/issues",
   "dependencies": {
     "@localz/openapi-to-postmanv2": "1.2.14",
-    "@oclif/command": "^1",
-    "@oclif/config": "^1",
+    "@oclif/command": "^1.8.36",
+    "@oclif/config": "^1.18.17",
     "@oclif/plugin-help": "^3",
     "axios": "0.19.2",
     "swagger2openapi": "6.2.3",
