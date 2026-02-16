@@ -12,8 +12,8 @@
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^3",
-    "axios": "0.19.2",
-    "swagger2openapi": "6.2.3",
+    "axios": "1.13.5",
+    "swagger2openapi": "7.0.0",
     "tslib": "^1"
   },
   "devDependencies": {
